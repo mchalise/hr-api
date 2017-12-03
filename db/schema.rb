@@ -12,21 +12,24 @@
 
 ActiveRecord::Schema.define(version: 20171130145449) do
 
-  create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "cover_letter",    limit: 65535
-    t.text     "applicant_name",  limit: 65535
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "applicants", force: :cascade do |t|
+    t.text     "cover_letter"
+    t.text     "applicant_name"
     t.string   "applying_for"
-    t.text     "contact_no",      limit: 65535
-    t.text     "email",           limit: 65535
-    t.text     "major_skills",    limit: 65535
-    t.text     "work_experience", limit: 65535
-    t.text     "education",       limit: 65535
-    t.text     "expected_salary", limit: 65535
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.text     "contact_no"
+    t.text     "email"
+    t.text     "major_skills"
+    t.text     "work_experience"
+    t.text     "education"
+    t.text     "expected_salary"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
